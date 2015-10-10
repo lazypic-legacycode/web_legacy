@@ -3,8 +3,8 @@
 
 #install
 ```
-go get -u github.com/khw7096/lazyweb
-cd $GOPATH/src/github.com/khw7096/lazyweb
+go get -u github.com/lazypic/lazyweb
+cd $GOPATH/src/github.com/lazypic/lazyweb
 go build
 ```
 #run
