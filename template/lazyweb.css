@@ -1,0 +1,101 @@
+@charset "utf-8";
+html, body {
+	height: 100%;
+	background:#000000;
+	color: #AAAAAA;
+}
+
+body { margin: 0; }
+#body { min-height: 85%; }
+
+a:link {text-decoration:none; color:#AAAAAA;}
+a:visited {text-decoration:none; color:#AAAAAA;}
+a:active {text-decoration:none; color:#AAAAAA;}
+a:hover {text-decoration:none; color:#AAAAAA; cursor:pointer;}
+a img { border: none; }
+img {
+	vertical-align: middle;
+	border: none;
+	margin-bottom: 2px;
+}
+
+/*content의 a tags를 위해서 셋팅함.*/
+a.link {
+	color:#22BEE3;
+}
+
+div.header {
+	background:#000000;
+	overflow: auto;
+	width: 100%
+}
+
+div.menu {
+	background:#000000;
+	text-align: center;
+	float: left;
+	padding: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	display: inline-block;
+	letter-spacing: 1px;
+}
+
+
+div.menuon {
+	background:#000000;
+	color:#FF1E68;
+	text-align: center;
+	float: left;
+	padding: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	display: inline-block;
+	letter-spacing: 1px;
+}
+
+
+div.logo {
+	color: #EEEEEE;
+	background:#000000;
+	text-align: center;
+	float: left;
+	padding: 20px;
+	width: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+#content {
+	background:#000000;
+	padding-bottom:10em;
+	/*text-align: center;*/
+	padding-left: 17em;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	letter-spacing: 2px;
+	line-height: 2em;
+}
+
+
+#about {
+	background:#000000;
+	padding-bottom:10em;
+	text-align: center;
+	padding: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	letter-spacing: 10px;
+}
+
+
+
+#footer {
+	background:#000000;
+	/* height: 5em; */
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+}
