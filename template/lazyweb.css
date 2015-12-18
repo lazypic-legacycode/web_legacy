@@ -6,7 +6,7 @@ html, body {
 }
 
 body { margin: 0; }
-#body { min-height: 85%; }
+#body { min-height: 70%; }
 
 a:link {text-decoration:none; color:#AAAAAA;}
 a:visited {text-decoration:none; color:#AAAAAA;}
@@ -94,7 +94,7 @@ div.logo {
 
 #footer {
 	background:#000000;
-	/* height: 5em; */
+	height: 100px;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 0.8em;
