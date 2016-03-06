@@ -4,19 +4,9 @@
 #install
 ```
 go get -u github.com/lazypic/web
-cd $GOPATH/src/github.com/lazypic/web
-go build
 ```
 #run
 ```
-./lazyweb -http=:80
+cd $GOPATH/src/github.com/lazypic/web
+web -http=:80
 ```
-#todolist
-- [ ] db crypto.
-- [ ] login.
-- [ ] concept library.
- - [ ] view image.
- - [ ] add image.
- - [ ] add tags.
- - [ ] add viewer.
- - [ ] sort for story.
