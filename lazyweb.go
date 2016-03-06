@@ -59,6 +59,13 @@ func www_fun(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, p)
 }
 
+func www_fun(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	t, _ := template.ParseFiles("template/coffeecat.html")
+	p := Web{Title: "Lazypic:Coffeecat"}
+	t.Execute(w, p)
+}
+
 
 func main() {
 	portPtr := flag.String("http", "", "service port ex):80")
@@ -73,6 +80,7 @@ func main() {
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/fun", www_fun)
 	http.HandleFunc("/opensource", www_opensource)
+	http.HandleFunc("/coffeecat", www_coffeecat)
 	http.HandleFunc("/about", www_about)
 
 	http.ListenAndServe(*portPtr,nil)
