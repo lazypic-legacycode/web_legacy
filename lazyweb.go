@@ -59,7 +59,7 @@ func www_fun(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, p)
 }
 
-func www_fun(w http.ResponseWriter, r *http.Request) {
+func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	t, _ := template.ParseFiles("template/coffeecat.html")
 	p := Web{Title: "Lazypic:Coffeecat"}
