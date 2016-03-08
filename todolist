@@ -5,3 +5,4 @@ tail을 gen하는 코드생성.
 - foot는 항상 아래에..
 - 이미지는 좌우 꽉차게..
 - 메뉴도 글씨 잘보이도록.. 자동 align
+- opensource page는 자동으로 생성된다. github에서 항목을 가지고 오며 description도 같이 가져와서클릭 메뉴를 만든다.
