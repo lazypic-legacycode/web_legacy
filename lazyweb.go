@@ -1,14 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"flag"
-	"os"
+	"fmt"
+	"html/template"
 	"io"
 	"net"
 	"net/http"
-	"html/template"
-	)
+	"os"
+)
 
 func localIP() string {
 	var iplist []string
@@ -52,7 +52,6 @@ func www_opensource(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, p)
 }
 
-
 func www_fun(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	t, _ := template.ParseFiles("template/fun.html")
@@ -66,9 +65,8 @@ func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	for i := 1; i < 6; i++ {
 		imagestr += fmt.Sprintf(`<img src="/images/coffeecat/%02d.png"><br>`, i)
 	}
-	io.WriteString(w, head("Coffeecat") + menu("coffeecat")+ imagestr + tail())
+	io.WriteString(w, head("Coffeecat")+menu("coffeecat")+imagestr+tail())
 }
-
 
 func main() {
 	portPtr := flag.String("http", "", "service port ex):80")
@@ -85,5 +83,5 @@ func main() {
 	http.HandleFunc("/opensource", www_opensource)
 	http.HandleFunc("/coffeecat", www_coffeecat)
 	http.HandleFunc("/about", www_about)
-	http.ListenAndServe(*portPtr,nil)
+	http.ListenAndServe(*portPtr, nil)
 }

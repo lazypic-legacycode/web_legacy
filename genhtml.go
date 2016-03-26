@@ -18,7 +18,7 @@ func head(title string) string {
 func menu(sel string) string {
 	var rstring string
 	rstring += `<div class="header"><div class="logo"><a href="/"><img src="/images/lazypic_logo.png" width=180 height=60></a></div>`
-	menus := []string{"coffeecat","shortfilms","fun","opensource","about"}
+	menus := []string{"coffeecat", "shortfilms", "fun", "opensource", "about"}
 	for _, i := range menus {
 		if i == sel {
 			rstring += fmt.Sprintf(`<div class="menuon">%s</div>`, i)
@@ -30,7 +30,7 @@ func menu(sel string) string {
 }
 
 func tail() string {
-	return`
+	return `
 <div id="footer">
 Copyright © 2016 All rights Reserved by Lazypictures.
 </div></body></html>
