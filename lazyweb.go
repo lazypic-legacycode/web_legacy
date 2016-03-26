@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"flag"
 	"os"
+	"io"
 	"net"
 	"net/http"
 	"html/template"
@@ -61,9 +62,7 @@ func www_fun(w http.ResponseWriter, r *http.Request) {
 
 func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	t, _ := template.ParseFiles("template/coffeecat.html")
-	p := Web{Title: "Lazypic:Coffeecat"}
-	t.Execute(w, p)
+	io.WriteString(w, head("Coffeecat") + menu("coffeecat") + tail())
 }
 
 
@@ -82,6 +81,5 @@ func main() {
 	http.HandleFunc("/opensource", www_opensource)
 	http.HandleFunc("/coffeecat", www_coffeecat)
 	http.HandleFunc("/about", www_about)
-
 	http.ListenAndServe(*portPtr,nil)
 }
