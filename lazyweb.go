@@ -62,7 +62,11 @@ func www_fun(w http.ResponseWriter, r *http.Request) {
 
 func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	io.WriteString(w, head("Coffeecat") + menu("coffeecat") + tail())
+	imagestr := "<center>"
+	for i := 1; i < 6; i++ {
+		imagestr += fmt.Sprintf(`<img src="/images/coffeecat/%02d.png"><br>`, i)
+	}
+	io.WriteString(w, head("Coffeecat") + menu("coffeecat")+ imagestr + tail())
 }
 
 
