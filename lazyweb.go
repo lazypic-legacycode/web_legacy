@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"log"
 	"net/http"
 	"os"
 )
@@ -65,5 +66,5 @@ func main() {
 	http.HandleFunc("/opensource", www_opensource)
 	http.HandleFunc("/coffeecat", www_coffeecat)
 	http.HandleFunc("/about", www_about)
-	http.ListenAndServe(*portPtr, nil)
+	log.Fatal(http.ListenAndServe(*portPtr, nil))
 }
