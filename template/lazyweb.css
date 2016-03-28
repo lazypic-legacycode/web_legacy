@@ -27,6 +27,10 @@ div.header {
 	width: 100%
 }
 
+img.toon {
+	text-align: center;
+}
+
 div.menu {
 	background:#000000;
 	text-align: center;
