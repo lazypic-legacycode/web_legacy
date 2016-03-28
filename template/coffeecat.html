@@ -1,26 +1,10 @@
 <!DOCTYPE html>
-<head>
-<title>{{.Title}}</title>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="template/lazyweb.css">
-<link rel="icon" type="image/png" href="/images/icon/lazyweb.png">
-</head>
+{{template "head.html" .}}
 <body>
-
-<div class="header">
-<div class="logo"><a href="/"><img src="/images/lazypic_logo.png" width=180 height=60></a></div>
-<div class="menuon">Coffeecat</div>
-<div class="menu"><a href="/shortfilms">Short Films</a></div>
-<div class="menu"><a href="/fun">Fun</a></div>
-<div class="menu"><a href="/opensource">OpenSource</a></div>
-<div class="menu"><a href="/about">About</a></div>
-</div>
-
-<center>
-<img src="/images/coffeecat/00.png"><br>
-<img src="/images/coffeecat/01.png"><br>
-<img src="/images/coffeecat/02.png"><br>
-<img src="/images/coffeecat/03.png"><br>
-<img src="/images/coffeecat/04.png"><br>
-<img src="/images/coffeecat/05.png"><br>
-{{.Tail}}
+{{template "menu.html" .}}
+{{range .Images}}
+	<img src="{{.}}" class="toon"><br>
+{{end}}
+{{template "footer.html"}}
+</body>
+</html>

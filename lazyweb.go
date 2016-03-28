@@ -4,51 +4,97 @@ import (
 	"flag"
 	"fmt"
 	"html/template"
-	"io"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
+	"sort"
+	"strings"
 )
 
-type Web struct {
-	Title string
+var Menus []string
+
+func init() {
+	Menus = []string{"CoffeeCat", "ShortFilms", "Fun", "OpenSource", "About"}
 }
 
 func www_root(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	t, _ := template.ParseFiles("template/index.html")
-	p := Web{Title: "Lazypic"}
-	t.Execute(w, p)
+	www(w, r, "template/index.html", "Index")
 }
 
 func www_about(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	t, _ := template.ParseFiles("template/about.html")
-	p := Web{Title: "Lazypic:about"}
-	t.Execute(w, p)
+	www(w, r, "template/about.html", "About")
 }
 
 func www_opensource(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	t, _ := template.ParseFiles("template/opensource.html")
-	p := Web{Title: "Lazypic:Opensource"}
-	t.Execute(w, p)
+	www(w, r, "template/opensource.html", "OpenSource")
 }
 
 func www_fun(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	t, _ := template.ParseFiles("template/fun.html")
-	p := Web{Title: "Lazypic:Fun"}
-	t.Execute(w, p)
+	www(w, r, "template/fun.html", "Fun")
 }
 
+// www_coffeecat is little special, because it automatically put image files.
 func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	imagestr := ""
-	for i := 1; i < 6; i++ {
-		imagestr += fmt.Sprintf(`<img src="/images/coffeecat/%02d.png" class="toon"><br>`, i)
+	f, err := os.Open("images/coffeecat")
+	if err != nil {
+		log.Print(err)
+		return
 	}
-	io.WriteString(w, head("Coffeecat")+menu("coffeecat")+imagestr+tail())
+	images, err := f.Readdirnames(-1)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+	sort.Strings(images)
+	for i, img := range images {
+		images[i] = filepath.Join("images/coffeecat", img)
+	}
+
+	fmap := template.FuncMap{
+		"lower": strings.ToLower,
+	}
+	t, err := template.New("coffeecat.html").Funcs(fmap).ParseFiles("template/coffeecat.html", "template/head.html", "template/menu.html", "template/footer.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	info := struct {
+		Menus  []string
+		MenuOn string
+		Images []string
+	}{
+		Menus:  Menus,
+		MenuOn: "CoffeeCat",
+		Images: images,
+	}
+	err = t.Execute(w, info)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func www(w http.ResponseWriter, r *http.Request, page, menuon string) {
+	w.Header().Set("Content-Type", "text/html")
+	fmap := template.FuncMap{
+		"lower": strings.ToLower,
+	}
+	t, err := template.New(filepath.Base(page)).Funcs(fmap).ParseFiles(page, "template/head.html", "template/menu.html", "template/footer.html")
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	info := struct {
+		Menus  []string
+		MenuOn string
+	}{
+		Menus:  Menus,
+		MenuOn: menuon,
+	}
+	err = t.Execute(w, info)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {

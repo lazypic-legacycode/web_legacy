@@ -1,0 +1,12 @@
+<div class="header">
+	<div class="logo">
+		<a href="/"><img src="/images/lazypic_logo.png" width=180 height=60></a>
+	</div>
+	{{range .Menus}}
+		{{if eq . $.MenuOn}}
+			<div class="menuon">{{.}}</div>
+		{{else}}
+			<div class="menu"><a href="/{{lower .}}">{{.}}</a></div>
+		{{end}}
+	{{end}}
+</div>
