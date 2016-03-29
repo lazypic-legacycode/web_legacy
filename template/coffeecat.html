@@ -2,9 +2,11 @@
 {{template "head.html" .}}
 <body>
 {{template "menu.html" .}}
+<div style="text-align:center">
 {{range .Images}}
-	<img src="{{.}}" class="toon"><br>
+	<img src="{{.}}"><br>
 {{end}}
+<div>
 {{template "footer.html"}}
 </body>
 </html>
