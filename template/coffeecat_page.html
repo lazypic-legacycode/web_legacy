@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{{template "head.html" .}}
+<body>
+{{template "menu.html" .}}
+<div style="text-align:center">
+	<img src="/{{.Image}}"><br>
+	<div style="margin:15px">
+		{{if ne .Prev ""}}<a id="prev-page" href="/{{.Prev}}"><< 이전</a>{{else}}<< 이전{{end}}
+		<span>&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+		{{if ne .Next ""}}<a id="next-page" href="/{{.Next}}">다음 >></a>{{else}}다음 >>{{end}}
+	</div>
+</div>
+{{template "footer.html"}}
+<script type="text/javascript">
+function changePage(ev) {
+	if (ev.key === "ArrowLeft") {
+		el = document.getElementById("prev-page");
+		if (el) {
+			location.href = el.href;
+		}
+	} else if (ev.key === "ArrowRight") {
+		el = document.getElementById("next-page");
+		if (el) {
+			location.href = el.href;
+		}
+	}
+}
+document.addEventListener("keypress", changePage);
+</script>
+</body>
+
+</html>

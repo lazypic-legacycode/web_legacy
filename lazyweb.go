@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -40,6 +41,7 @@ func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 	f, err := os.Open("images/coffeecat")
 	if err != nil {
 		log.Print(err)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 	images, err := f.Readdirnames(-1)
@@ -52,10 +54,42 @@ func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 		images[i] = filepath.Join("images/coffeecat", img)
 	}
 
+	if r.URL.Path == "/coffeecat/" {
+		www_coffeecat_root(w, r)
+	} else {
+		subURL := r.URL.Path[len("/coffeecat/"):]
+		// sub url should convertable to int
+		// ex) r.URL.Path == "/coffeecat/0"
+		i, err := strconv.Atoi(subURL)
+		if err != nil {
+			log.Print(err)
+			http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+			return
+		}
+		www_coffeecat_page(w, r, i)
+	}
+}
+
+func www_coffeecat_root(w http.ResponseWriter, r *http.Request) {
+	f, err := os.Open("images/coffeecat")
+	if err != nil {
+		log.Print(err)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+	images, err := f.Readdirnames(-1)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+	sort.Strings(images)
+	for i, img := range images {
+		images[i] = filepath.Join("images/coffeecat", img)
+	}
 	fmap := template.FuncMap{
 		"lower": strings.ToLower,
 	}
-	t, err := template.New("coffeecat.html").Funcs(fmap).ParseFiles("template/coffeecat.html", "template/head.html", "template/menu.html", "template/footer.html")
+	t, err := template.New("coffeecat_root.html").Funcs(fmap).ParseFiles("template/coffeecat_root.html", "template/head.html", "template/menu.html", "template/footer.html")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -67,6 +101,67 @@ func www_coffeecat(w http.ResponseWriter, r *http.Request) {
 		Menus:  Menus,
 		MenuOn: "CoffeeCat",
 		Images: images,
+	}
+	err = t.Execute(w, info)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
+	img := fmt.Sprintf("images/coffeecat/%02d.png", i)
+	_, err := os.Stat(img)
+	if err != nil {
+		if os.IsNotExist(err) {
+			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+			return
+		} else {
+			log.Print(err)
+			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+			return
+		}
+	}
+	prev := fmt.Sprintf("coffeecat/%02d", i-1)
+	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i-1))
+	if err != nil {
+		if os.IsNotExist(err) {
+			prev = ""
+		} else {
+			log.Print(err)
+			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+			return
+		}
+	}
+	next := fmt.Sprintf("coffeecat/%02d", i+1)
+	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i+1))
+	if err != nil {
+		if os.IsNotExist(err) {
+			next = ""
+		} else {
+			log.Print(err)
+			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+			return
+		}
+	}
+	fmap := template.FuncMap{
+		"lower": strings.ToLower,
+	}
+	t, err := template.New("coffeecat_page.html").Funcs(fmap).ParseFiles("template/coffeecat_page.html", "template/head.html", "template/menu.html", "template/footer.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	info := struct {
+		Menus  []string
+		MenuOn string
+		Image  string
+		Prev   string
+		Next   string
+	}{
+		Menus:  Menus,
+		MenuOn: "CoffeeCat",
+		Image:  img,
+		Prev:   prev,
+		Next:   next,
 	}
 	err = t.Execute(w, info)
 	if err != nil {
@@ -110,7 +205,7 @@ func main() {
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/fun", www_fun)
 	http.HandleFunc("/opensource", www_opensource)
-	http.HandleFunc("/coffeecat", www_coffeecat)
+	http.HandleFunc("/coffeecat/", www_coffeecat)
 	http.HandleFunc("/about", www_about)
 	log.Fatal(http.ListenAndServe(*portPtr, nil))
 }

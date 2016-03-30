@@ -4,7 +4,7 @@
 	</div>
 	{{range .Menus}}
 		{{if eq . $.MenuOn}}
-			<div class="menuon">{{.}}</div>
+			<div class="menuon"><a href="/{{lower .}}">{{.}}</a></div>
 		{{else}}
 			<div class="menu"><a href="/{{lower .}}">{{.}}</a></div>
 		{{end}}

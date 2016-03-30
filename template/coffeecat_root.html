@@ -3,8 +3,8 @@
 <body>
 {{template "menu.html" .}}
 <div style="text-align:center">
-{{range .Images}}
-	<img src="{{.}}"><br>
+{{range $i, $_ := .Images}}
+	<div style="margin:10px"><a href="{{$i}}">{{$i}}화 보기</a></div>
 {{end}}
 </div>
 {{template "footer.html"}}
