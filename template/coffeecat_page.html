@@ -13,19 +13,19 @@
 {{template "footer.html"}}
 <script type="text/javascript">
 function changePage(ev) {
-	if (ev.key === "ArrowLeft") {
+	if (ev.which === 37) {
 		el = document.getElementById("prev-page");
 		if (el) {
 			location.href = el.href;
 		}
-	} else if (ev.key === "ArrowRight") {
+	} else if (ev.which === 39) {
 		el = document.getElementById("next-page");
 		if (el) {
 			location.href = el.href;
 		}
 	}
 }
-document.addEventListener("keypress", changePage);
+document.addEventListener("keydown", changePage);
 </script>
 </body>
 
