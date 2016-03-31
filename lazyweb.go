@@ -114,7 +114,7 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 			return
 		}
 	}
-	prev := fmt.Sprintf("coffeecat/%02d", i-1)
+	prev := fmt.Sprintf("coffeecat/%d", i-1)
 	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i-1))
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -125,7 +125,7 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 			return
 		}
 	}
-	next := fmt.Sprintf("coffeecat/%02d", i+1)
+	next := fmt.Sprintf("coffeecat/%d", i+1)
 	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i+1))
 	if err != nil {
 		if os.IsNotExist(err) {
