@@ -5,9 +5,9 @@
 <div style="text-align:center">
 	<img src="/{{.Image}}"><br>
 	<div style="margin:15px">
-		{{if ne .Prev ""}}<a id="prev-page" href="/{{.Prev}}"><< 이전</a>{{else}}<< 이전{{end}}
+		{{if ne .Prev ""}}<a id="prev-page" href="/{{.Prev}}"><< 이전</a>{{else}}<span style="color:#333333"><< 이전</span>{{end}}
 		<span>&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-		{{if ne .Next ""}}<a id="next-page" href="/{{.Next}}">다음 >></a>{{else}}다음 >>{{end}}
+		{{if ne .Next ""}}<a id="next-page" href="/{{.Next}}">다음 >></a>{{else}}<span style="color:#333333">다음 >></span>{{end}}
 	</div>
 </div>
 {{template "footer.html"}}
