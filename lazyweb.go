@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -82,30 +83,22 @@ func www_coffeecat_root(w http.ResponseWriter, r *http.Request) {
 		log.Print(err)
 		return
 	}
-	sort.Strings(images)
-	for i, img := range images {
-		images[i] = filepath.Join("images/coffeecat", img)
+	sort.Sort(sort.Reverse(sort.StringSlice(images)))
+	last := -1
+	re := regexp.MustCompile("([0-9]+)[.]png$")
+	for i := 0; i < len(images); i++ {
+		m := re.FindStringSubmatch(images[i])
+		if len(m) == 2 {
+			last, _ = strconv.Atoi(m[1])
+			break
+		}
 	}
-	fmap := template.FuncMap{
-		"lower": strings.ToLower,
+	if last == -1 {
+		log.Print("no images matches to regexp.")
+		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+		return
 	}
-	t, err := template.New("coffeecat_root.html").Funcs(fmap).ParseFiles("template/coffeecat_root.html", "template/head.html", "template/menu.html", "template/footer.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-	info := struct {
-		Menus  []string
-		MenuOn string
-		Images []string
-	}{
-		Menus:  Menus,
-		MenuOn: "CoffeeCat",
-		Images: images,
-	}
-	err = t.Execute(w, info)
-	if err != nil {
-		log.Fatal(err)
-	}
+	http.Redirect(w, r, fmt.Sprintf("/coffeecat/%d", last), http.StatusFound)
 }
 
 func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
