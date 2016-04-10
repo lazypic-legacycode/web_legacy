@@ -1,19 +1,20 @@
 @charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 html, body {
 	background:#000000;
-	color: #AAAAAA;
 }
 
-
-a:link {text-decoration:none; color:#AAAAAA;}
-a:visited {text-decoration:none; color:#AAAAAA;}
-a:active {text-decoration:none; color:#AAAAAA;}
-a:hover {text-decoration:none; color:#AAAAAA; cursor:pointer;}
+a:link {text-decoration:none; color:#BEC9AB;}
+a:visited {text-decoration:none; color:#BEC9AB;}
+a:active {text-decoration:none; color:#BEC9AB;}
+a:hover {text-decoration:none; color:#5E6455; cursor:pointer;}
 
 a.first {
 	color:#22BEE3;
 	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Noto Sans CJK KR', sans-serif;
 	font-size: 16px;
 }
 
@@ -26,7 +27,7 @@ img {
 
 /*content의 a tags를 위해서 셋팅함.*/
 a.link {
-	color:#22BEE3;
+	color:#349262;
 }
 
 div.header {
@@ -36,11 +37,12 @@ div.header {
 }
 
 div.menu {
+	color:#5E6455;
 	background:#000000;
 	text-align: center;
 	float: left;
 	padding: 30px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	display: inline-block;
 	letter-spacing: 1px;
@@ -48,12 +50,12 @@ div.menu {
 
 
 div.menuon {
+	color:#BEC9AB;
 	background:#000000;
-	color:#FF1E68;
 	text-align: center;
 	float: left;
 	padding: 30px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	display: inline-block;
 	letter-spacing: 1px;
@@ -67,15 +69,15 @@ div.logo {
 	float: left;
 	padding: 8px;
 	width: 200px;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	display: inline-block;
 }
 
 #content {
+	color:#BEC9AB;
 	padding-bottom:10em;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	letter-spacing: 2px;
 	line-height: 2em;
@@ -88,7 +90,6 @@ div.logo {
 	padding-bottom:10em;
 	text-align: center;
 	padding: 30px;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 25px;
 	letter-spacing: 10px;
 }
@@ -96,10 +97,11 @@ div.logo {
 
 
 footer {
+	color: #585E53;
 	background:#000000;
 	height: 100px;
 	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 0.8em;
 	padding: 10px;
 }
