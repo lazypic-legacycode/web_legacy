@@ -24,6 +24,10 @@ func www_root(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/index.html", "Index")
 }
 
+func www_shortfilms(w http.ResponseWriter, r *http.Request) {
+	www(w, r, "template/shortfilms.html", "ShortFilms")
+}
+
 func www_about(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/about.html", "About")
 }
@@ -196,6 +200,7 @@ func main() {
 	http.Handle("/template/", http.StripPrefix("/template/", http.FileServer(http.Dir("template"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 	http.HandleFunc("/", www_root)
+	http.HandleFunc("/shortfilms", www_shortfilms)
 	http.HandleFunc("/fun", www_fun)
 	http.HandleFunc("/opensource", www_opensource)
 	http.HandleFunc("/coffeecat/", www_coffeecat)
