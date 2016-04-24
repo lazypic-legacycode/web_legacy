@@ -17,7 +17,7 @@ import (
 var Menus []string
 
 func init() {
-	Menus = []string{"CoffeeCat", "ShortFilms", "Fun", "OpenSource", "About"}
+	Menus = []string{"CoffeeCat", "ShortFilms", "Fun", "About"}
 }
 
 func www_root(w http.ResponseWriter, r *http.Request) {
@@ -32,9 +32,6 @@ func www_about(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/about.html", "About")
 }
 
-func www_opensource(w http.ResponseWriter, r *http.Request) {
-	www(w, r, "template/opensource.html", "OpenSource")
-}
 
 func www_fun(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/fun.html", "Fun")
@@ -202,7 +199,6 @@ func main() {
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/shortfilms", www_shortfilms)
 	http.HandleFunc("/fun", www_fun)
-	http.HandleFunc("/opensource", www_opensource)
 	http.HandleFunc("/coffeecat/", www_coffeecat)
 	http.HandleFunc("/about", www_about)
 	log.Fatal(http.ListenAndServe(*portPtr, nil))
