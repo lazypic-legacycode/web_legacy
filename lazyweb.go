@@ -17,7 +17,7 @@ import (
 var Menus []string
 
 func init() {
-	Menus = []string{"CoffeeCat", "ShortFilms", "Fun", "About"}
+	Menus = []string{"CoffeeCat", "ShortFilms", "About"}
 }
 
 func www_root(w http.ResponseWriter, r *http.Request) {
@@ -32,10 +32,6 @@ func www_about(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/about.html", "About")
 }
 
-
-func www_fun(w http.ResponseWriter, r *http.Request) {
-	www(w, r, "template/fun.html", "Fun")
-}
 
 // www_coffeecat is little special, because it automatically put image files.
 func www_coffeecat(w http.ResponseWriter, r *http.Request) {
@@ -198,7 +194,6 @@ func main() {
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/shortfilms", www_shortfilms)
-	http.HandleFunc("/fun", www_fun)
 	http.HandleFunc("/coffeecat/", www_coffeecat)
 	http.HandleFunc("/about", www_about)
 	log.Fatal(http.ListenAndServe(*portPtr, nil))
