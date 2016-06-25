@@ -1,4 +1,4 @@
-# lazyweb
+# lazypicutres web code.
 * [lazypictures web service.](http://lazyd.org)
 
 # install
@@ -19,3 +19,4 @@ web -http :8080
 
 # Design 규칙
 - 하단의 아이콘의 가로 사이즈는 40x40 이다.
+- 이미지는 유지보수의 편리함을 위해서 SVG를 사용한다.
