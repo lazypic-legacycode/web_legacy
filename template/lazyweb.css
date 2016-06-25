@@ -74,6 +74,10 @@ div.logo {
 	display: inline-block;
 }
 
+img.logo {
+	padding: 15px;
+}
+
 #content {
 	color:#BEC9AB;
 	padding:10px;
