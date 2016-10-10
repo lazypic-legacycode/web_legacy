@@ -22,3 +22,5 @@ web -http :8080
 - 이미지는 유지보수의 편리함을 위해서 SVG를 사용한다.
 - 사용했던 Bitcoin 거래소 : https://bitwhere.com
 - 주제색을 5%만 사용할 것. : http://post.naver.com/viewer/postView.nhn?volumeNo=3899006&memberNo=956644
+
+[[members]]
