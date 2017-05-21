@@ -19,7 +19,7 @@ web -http :8080
 
 #### 같이 개발하기
 - github.com/lazypic/web을 `origin` 대신 `upstream` 으로 설정합니다.
-- 위 리포지터를 자신의 계정으로 Fork 합니다.
+- 위 리포지터리를 자신의 계정으로 Fork 합니다.
 - Fork한 폴더로 이동후 터미널에서 아래처럼 타이핑 합니다.
 ```
 $ git remote add upstream https://github.com/lazypic/web
