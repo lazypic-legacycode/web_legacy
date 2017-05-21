@@ -22,8 +22,8 @@ web -http :8080
 
 upstream 을 설정하는 방법입니다.
 
-- github.com/lazypic/web 리포지터리를 자신의 계정으로 fork 합니다.
-- fork한 리포지터리를 `clone` 합니다.
+- github.com/lazypic/web 리포지터리를 자신의 계정으로 Fork 합니다.
+- Fork 한 리포지터리를 `clone` 합니다.
 - `clone`된 폴더로 이동후 터미널에서 아래처럼 타이핑 합니다.
 ```
 $ git remote add upstream https://github.com/lazypic/web
