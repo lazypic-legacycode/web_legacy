@@ -18,16 +18,19 @@ web -http :8080
 ```
 
 #### 같이 개발하기
-- 퍼블리쉬 리포지터리와 개발 리포지터리를 구분하기 위해서 일반적으로 upstream 알리아스를 설정합니다.
-- `upstream`으로 설정하는 방법을 소개합니다.
+퍼블리쉬 리포지터리와 개발 리포지터리를 구분하기 위해서 일반적으로 upstream 알리아스를 설정합니다.
+upstream 으로 설정하는 방법을 소개합니다.
+
 - github.com/lazypic/web 리포지터리를 자신의 계정으로 fork 합니다.
 - fork한 리포지터리를 `clone` 합니다.
 - `clone`된 폴더로 이동후 터미널에서 아래처럼 타이핑 합니다.
 ```
 $ git remote add upstream https://github.com/lazypic/web
 ```
-- 개발중인 코드를 업로드 할 때는 `git push origin master`를 사용하고 리뷰를 합니다.
-- 퍼블리쉬된 코드를 pull 할 때는 `git pull upstream master`를 사용합니다.
+
+개발중인 코드를 업로드 할 때는 `git push origin master`를 사용하고 리뷰를 합니다.
+
+퍼블리쉬된 코드를 pull 할 때는 `git pull upstream master`를 사용합니다.
 
 #### 디자인 & 정보
 - 하단의 아이콘의 가로 사이즈는 40x40 이다.
