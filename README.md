@@ -19,7 +19,8 @@ web -http :8080
 
 #### 같이 개발하기
 퍼블리쉬 리포지터리와 개발 리포지터리를 구분하기 위해서 일반적으로 upstream 알리아스를 설정합니다.
-upstream 으로 설정하는 방법을 소개합니다.
+
+upstream 을 설정하는 방법입니다.
 
 - github.com/lazypic/web 리포지터리를 자신의 계정으로 fork 합니다.
 - fork한 리포지터리를 `clone` 합니다.
