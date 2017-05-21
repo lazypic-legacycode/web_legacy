@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80">
+    <desc iVinci="yes" version="4.6" gridStep="20" showGrid="no" snapToGrid="no" codePlatform="0"/>
+    <g id="Layer1" name="Layer 4" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-31.9928,-22.3637,63.9857,44.7274)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1,0,0,1,40.0154,39.2781)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M8.40831,27.5587 C8.83905,21.152 12.4753,17.5186 18.4296,17.2628 C31.1586,16.716 45.271,16.9763 58.41,16.9763 C66.5028,16.9763 70.9984,20.3087 71.5636,26.5126 C72.257,34.1254 72.0426,41.9454 71.5775,49.9391 C71.1636,57.0523 68.0409,60.9747 62.1249,61.2138 C48.2783,61.7735 34.2036,61.7551 20.5564,61.3277 C12.6275,61.0794 9.48914,58.7468 8.73487,51.9282 C7.85318,43.9578 7.84537,35.9314 8.40831,27.5587 Z" style="stroke:none;fill-rule:evenodd;fill:#6b7669;fill-opacity:1;"/>
+        </g>
+    </g>
+    <g id="Layer2" name="Layer 5" opacity="1">
+        <g id="Shape2">
+            <desc shapeID="2" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-8.62062,-9.14884,17.2412,18.2977)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1,0,0,1,41.5607,39.1308)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath2" d="M32.9401,29.982 C32.9401,29.982 50.1813,38.9407 50.1813,38.9407 C50.1813,38.9407 33.0668,48.2797 33.0668,48.2797 C33.0668,48.2797 32.9401,29.982 32.9401,29.982 Z" style="stroke:none;fill-rule:evenodd;fill:#3a4039;fill-opacity:1;"/>
+        </g>
+    </g>
+    <g id="Layer3" name="Layer 6" opacity="1">
+        <g id="Shape3">
+            <desc shapeID="3" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-8.62062,-4.9621,17.2412,9.9242)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1,0,0,1,41.5607,34.9441)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath3" d="M32.9401,29.982 C32.9401,29.982 50.1813,38.9407 50.1813,38.9407 C50.1813,38.9407 48.4511,39.9062 48.4511,39.9062 C48.4511,39.9062 32.9401,29.982 32.9401,29.982 Z" style="stroke:none;fill-rule:evenodd;fill:#4d554b;fill-opacity:1;"/>
+        </g>
+    </g>
+</svg>

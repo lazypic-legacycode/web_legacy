@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80">
+    <desc iVinci="yes" version="4.6" gridStep="20" showGrid="no" snapToGrid="no" codePlatform="0"/>
+    <g id="Layer1" name="Layer 2" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="4" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-3.54688,-3.54688,7.09375,7.09375)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1.05223,0,0,1.05223,57.1852,22.1817)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M53.4531,22.1817 C53.4531,20.1205 55.124,18.4496 57.1852,18.4496 C59.2464,18.4496 60.9174,20.1205 60.9174,22.1817 C60.9173,24.2429 59.2464,25.9138 57.1852,25.9138 C55.124,25.9138 53.4531,24.2429 53.4531,22.1817 Z" style="stroke:none;fill-rule:evenodd;fill:#6b7669;fill-opacity:1;"/>
+        </g>
+        <g id="Shape2">
+            <desc shapeID="2" type="0" basicInfo-basicType="4" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-14.1295,-14.1295,28.2589,28.2589)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.959183,0,0,0.959183,40.1765,39.0773)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath2" d="M26.6237,39.0773 C26.6237,31.5923 32.6915,25.5245 40.1765,25.5245 C47.6615,25.5245 53.7292,31.5923 53.7292,39.0773 C53.7292,46.5622 47.6615,52.63 40.1765,52.63 C32.6915,52.63 26.6237,46.5622 26.6237,39.0773 Z" style="stroke:#6b7669;stroke-opacity:1;stroke-width:5.5;stroke-linejoin:miter;stroke-miterlimit:2;stroke-linecap:round;fill-rule:evenodd;fill:#969696;fill-opacity:0;"/>
+        </g>
+        <g id="Shape3">
+            <desc shapeID="3" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-27.7937,-27.3536,55.5874,54.7072)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1.03641,0,0,1.03641,40.1954,38.748)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath3" d="M11.8134,22.8353 C11.8134,15.9666 17.3816,10.3984 24.2503,10.3984 L56.0756,10.3984 C62.9444,10.3984 68.5126,15.9666 68.5126,22.8353 C69.0341,33.4376 69.2821,44.0632 68.5126,54.6606 C68.5126,61.5294 62.9444,67.0976 56.0756,67.0976 L24.2503,67.0976 C17.3816,67.0976 11.8134,61.5294 11.8134,54.6606 C11.228,44.0587 11.2692,33.4379 11.8134,22.8353 Z" style="stroke:#6b7669;stroke-opacity:1;stroke-width:5.5;stroke-linejoin:miter;stroke-miterlimit:2;stroke-linecap:round;fill-rule:evenodd;fill:#969696;fill-opacity:0;"/>
+        </g>
+    </g>
+</svg>
