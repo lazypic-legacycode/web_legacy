@@ -17,6 +17,13 @@ web -http :80
 web -http :8080
 ```
 
+#### 같이 개발하기
+- github.com/lazypic/web을 `origin` 대신 `upstream` 으로 설정합니다.
+- 설정방법은 아래와 같습니다.
+```
+$ git remote add upstream https://github.com/lazypic/web
+```
+
 #### 디자인 & 정보
 - 하단의 아이콘의 가로 사이즈는 40x40 이다.
 - 이미지는 유지보수의 편리함을 위해서 SVG를 사용한다.
