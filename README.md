@@ -29,7 +29,7 @@ upstream 을 설정하는 방법입니다.
 $ git remote add upstream https://github.com/lazypic/web
 ```
 
-개발중인 코드를 업로드 할 때는 `git push origin master`를 사용하고 리뷰를 합니다.
+개발중인 코드를 업로드 할 때는 `git push origin master`를 사용하고 Pull Request 를 합니다.
 
 퍼블리쉬된 코드를 pull 할 때는 `git pull upstream master`를 사용합니다.
 
