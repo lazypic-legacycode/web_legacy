@@ -69,7 +69,7 @@ func www_catndog(w http.ResponseWriter, r *http.Request) {
 // www_toon_root redirects to the last page of the toon.
 func www_toon_root(w http.ResponseWriter, r *http.Request, title string) {
 	ltitle := strings.ToLower(title)
-	f, err := os.Open("images/" + ltitle)
+	f, err := os.Open("toon/" + ltitle)
 	if err != nil {
 		log.Print(err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -103,7 +103,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 	ltitle := strings.ToLower(title)
 	w.Header().Set("Content-Type", "text/html")
 
-	img := fmt.Sprintf("images/"+ltitle+"/%02d.png", i)
+	img := fmt.Sprintf("toon/"+ltitle+"/%02d.png", i)
 	_, err := os.Stat(img)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -116,7 +116,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 		}
 	}
 	prev := fmt.Sprintf(ltitle+"/%d", i-1)
-	_, err = os.Stat(fmt.Sprintf("images/"+ltitle+"/%02d.png", i-1))
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i-1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			prev = ""
@@ -127,7 +127,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 		}
 	}
 	next := fmt.Sprintf(ltitle+"/%d", i+1)
-	_, err = os.Stat(fmt.Sprintf("images/"+ltitle+"/%02d.png", i+1))
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i+1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			next = ""
@@ -196,6 +196,7 @@ func main() {
 	}
 	http.Handle("/template/", http.StripPrefix("/template/", http.FileServer(http.Dir("template"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	http.Handle("/toon/", http.StripPrefix("/toon/", http.FileServer(http.Dir("toon"))))
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/shortfilms", www_shortfilms)
 	http.HandleFunc("/coffeecat/", www_coffeecat)
