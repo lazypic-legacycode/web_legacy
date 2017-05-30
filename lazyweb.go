@@ -103,7 +103,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 	ltitle := strings.ToLower(title)
 	w.Header().Set("Content-Type", "text/html")
 
-	img := fmt.Sprintf("toon/"+ltitle+"/%02d.png", i)
+	img := fmt.Sprintf("toon/"+ltitle+"/%04d.png", i)
 	_, err := os.Stat(img)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -116,7 +116,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 		}
 	}
 	prev := fmt.Sprintf(ltitle+"/%d", i-1)
-	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i-1))
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%04d.png", i-1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			prev = ""
@@ -127,7 +127,7 @@ func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) 
 		}
 	}
 	next := fmt.Sprintf(ltitle+"/%d", i+1)
-	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i+1))
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%04d.png", i+1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			next = ""
