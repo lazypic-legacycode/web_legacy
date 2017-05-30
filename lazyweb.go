@@ -17,7 +17,7 @@ import (
 var Menus []string
 
 func init() {
-	Menus = []string{"CoffeeCat", "ShortFilms", "About"}
+	Menus = []string{"CoffeeCat", "CatNDog", "ShortFilms", "About"}
 }
 
 func www_root(w http.ResponseWriter, r *http.Request) {
@@ -32,44 +32,44 @@ func www_about(w http.ResponseWriter, r *http.Request) {
 	www(w, r, "template/about.html", "About")
 }
 
-
-// www_coffeecat is little special, because it automatically put image files.
+// www_coffeecat shows coffeecat toon pages.
 func www_coffeecat(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	f, err := os.Open("images/coffeecat")
-	if err != nil {
-		log.Print(err)
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+	page := r.URL.Path[len("/coffeecat/"):]
+	if page == "" {
+		www_toon_root(w, r, "CoffeeCat")
 		return
 	}
-	images, err := f.Readdirnames(-1)
+	// page should convertable to int
+	i, err := strconv.Atoi(page)
 	if err != nil {
 		log.Print(err)
+		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
 		return
 	}
-	sort.Strings(images)
-	for i, img := range images {
-		images[i] = filepath.Join("images/coffeecat", img)
-	}
-
-	if r.URL.Path == "/coffeecat/" {
-		www_coffeecat_root(w, r)
-	} else {
-		subURL := r.URL.Path[len("/coffeecat/"):]
-		// sub url should convertable to int
-		// ex) r.URL.Path == "/coffeecat/0"
-		i, err := strconv.Atoi(subURL)
-		if err != nil {
-			log.Print(err)
-			http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
-			return
-		}
-		www_coffeecat_page(w, r, i)
-	}
+	www_toon_page(w, r, "CoffeeCat", i)
 }
 
-func www_coffeecat_root(w http.ResponseWriter, r *http.Request) {
-	f, err := os.Open("images/coffeecat")
+// www_catndog shows catndog toon pages.
+func www_catndog(w http.ResponseWriter, r *http.Request) {
+	page := r.URL.Path[len("/catndog/"):]
+	if page == "" {
+		www_toon_root(w, r, "CatNDog")
+		return
+	}
+	// page should convertable to int
+	i, err := strconv.Atoi(page)
+	if err != nil {
+		log.Print(err)
+		http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+		return
+	}
+	www_toon_page(w, r, "CatNDog", i)
+}
+
+// www_toon_root redirects to the last page of the toon.
+func www_toon_root(w http.ResponseWriter, r *http.Request, title string) {
+	ltitle := strings.ToLower(title)
+	f, err := os.Open("toon/" + ltitle)
 	if err != nil {
 		log.Print(err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -95,11 +95,15 @@ func www_coffeecat_root(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
-	http.Redirect(w, r, fmt.Sprintf("/coffeecat/%d", last), http.StatusFound)
+	http.Redirect(w, r, fmt.Sprintf("/"+ltitle+"/%d", last), http.StatusFound)
 }
 
-func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
-	img := fmt.Sprintf("images/coffeecat/%02d.png", i)
+// www_toon_page shows the page of the toon.
+func www_toon_page(w http.ResponseWriter, r *http.Request, title string, i int) {
+	ltitle := strings.ToLower(title)
+	w.Header().Set("Content-Type", "text/html")
+
+	img := fmt.Sprintf("toon/"+ltitle+"/%02d.png", i)
 	_, err := os.Stat(img)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -111,8 +115,8 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 			return
 		}
 	}
-	prev := fmt.Sprintf("coffeecat/%d", i-1)
-	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i-1))
+	prev := fmt.Sprintf(ltitle+"/%d", i-1)
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i-1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			prev = ""
@@ -122,8 +126,8 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 			return
 		}
 	}
-	next := fmt.Sprintf("coffeecat/%d", i+1)
-	_, err = os.Stat(fmt.Sprintf("images/coffeecat/%02d.png", i+1))
+	next := fmt.Sprintf(ltitle+"/%d", i+1)
+	_, err = os.Stat(fmt.Sprintf("toon/"+ltitle+"/%02d.png", i+1))
 	if err != nil {
 		if os.IsNotExist(err) {
 			next = ""
@@ -136,7 +140,7 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 	fmap := template.FuncMap{
 		"lower": strings.ToLower,
 	}
-	t, err := template.New("coffeecat_page.html").Funcs(fmap).ParseFiles("template/coffeecat_page.html", "template/head.html", "template/menu.html", "template/footer.html")
+	t, err := template.New("toon_page.html").Funcs(fmap).ParseFiles("template/toon_page.html", "template/head.html", "template/menu.html", "template/footer.html")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -148,7 +152,7 @@ func www_coffeecat_page(w http.ResponseWriter, r *http.Request, i int) {
 		Next   string
 	}{
 		Menus:  Menus,
-		MenuOn: "CoffeeCat",
+		MenuOn: title,
 		Image:  img,
 		Prev:   prev,
 		Next:   next,
@@ -192,9 +196,11 @@ func main() {
 	}
 	http.Handle("/template/", http.StripPrefix("/template/", http.FileServer(http.Dir("template"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	http.Handle("/toon/", http.StripPrefix("/toon/", http.FileServer(http.Dir("toon"))))
 	http.HandleFunc("/", www_root)
 	http.HandleFunc("/shortfilms", www_shortfilms)
 	http.HandleFunc("/coffeecat/", www_coffeecat)
+	http.HandleFunc("/catndog/", www_catndog)
 	http.HandleFunc("/about", www_about)
 	log.Fatal(http.ListenAndServe(*portPtr, nil))
 }
