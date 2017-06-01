@@ -33,6 +33,31 @@ $ git remote add upstream https://github.com/lazypic/web
 
 퍼블리쉬된 코드를 pull 할 때는 `git pull upstream master`를 사용합니다.
 
+#### 디자이너가 이미지 업로드하는 방법
+- 이 방식은 디자이너에게 조금 불편하지만, 서버가 바뀌거나 백업시 가장 안전합니다.
+- 최초 이미지를 업로드한다면, 홈 디렉토리에 현 코드저장소를 다운로드합니다.
+```
+cd ~
+git clone http://github.com/lazypic/wb
+```
+
+- 이미지 올리는 방법을 설명합니다.
+- 커피캣 32화를 예시로 작성합니다.
+- 0032.png 파일을 ~/web/toon/coffeecat 경로에 저장합니다.
+```
+$ cd ~/web/toon/coffeecat
+$ git add 0032.png
+$ git commit -m "커피캣 32화 업로드"
+$ git push origin master
+```
+
+- 정상적으로 업로드가 되었으면 서버에 접속합니다.
+```
+$ ssh root@lazypic.org
+# cd ~/go/src/github.com/lazypic/web
+# git pull
+```
+
 #### 디자인 & 정보
 - 하단의 아이콘의 가로 사이즈는 40x40 이다.
 - 이미지는 유지보수의 편리함을 위해서 SVG를 사용한다.
