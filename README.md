@@ -1,5 +1,5 @@
-# lazypicutres web code.
-* [lazypictures web service.](http://lazyd.org)
+# LAZYPIC 웹서비스
+* [lazypic.org](http://lazypic.org)
 
 #### install
 ```
@@ -17,7 +17,7 @@ web -http :80
 web -http :8080
 ```
 
-#### 같이 개발하기
+#### 개발자 규칙 : 같이 개발하기
 퍼블리쉬 리포지터리와 개발 리포지터리를 구분하기 위해서 일반적으로 upstream 알리아스를 설정합니다.
 
 upstream 을 설정하는 방법입니다.
@@ -46,6 +46,7 @@ git clone http://github.com/lazypic/wb
 - 0032.png 파일을 ~/web/toon/coffeecat 경로에 저장합니다.
 ```
 $ cd ~/web/toon/coffeecat
+$ git pull origin master // 개발자가 업로드한 내용이 있을 수 있다 업데이트한다.
 $ git add 0032.png
 $ git commit -m "커피캣 32화 업로드"
 $ git push origin master
