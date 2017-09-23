@@ -62,5 +62,5 @@ $ ssh root@lazypic.org
 #### 디자인 & 정보
 - 하단의 아이콘의 가로 사이즈는 40x40 이다.
 - 이미지는 유지보수의 편리함을 위해서 SVG를 사용한다.
-- 사용했던 Bitcoin 거래소 : https://bitwhere.com
+- 사용했던 Bitcoin 거래소 : https://www.bithumb.com
 - 주제색을 5%만 사용할 것. : http://post.naver.com/viewer/postView.nhn?volumeNo=3899006&memberNo=956644
