@@ -2,29 +2,44 @@
 {{template "head.html" .}}
 <body>
 {{template "menu.html" .}}
-<div style="text-align:center">
-	<img src="/{{.Image}}"><br>
-	<div style="margin:15px">
-		{{if ne .Prev ""}}<a id="prev-page" href="/{{.Prev}}"><< 이전</a>{{else}}<span style="color:#333333"><< 이전</span>{{end}}
-		<span>&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-		{{if ne .Next ""}}<a id="next-page" href="/{{.Next}}">다음 >></a>{{else}}<span style="color:#333333">다음 >></span>{{end}}
-	</div>
-	<br>
-	<a class="first" href="/{{lower .MenuOn}}/0">1화 보기</a>
+<main class="mdl-layout__content">
+	<div class="page-content">
+	<img src="/{{.Image}}" style="margin-top:50px;text-align:center" width=100%>
+
+<!-- 버튼 -->
+<div style="text-align:center;padding:20px">
+
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" onclick="location.href='/{{lower .MenuOn}}/0'" style="">
+	<i class="material-icons">reply_all</i>
+</button>
+
+{{if ne .Prev ""}}
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" id="prev-page" onclick="location.href='/{{.Prev}}'">
+		<i class="material-icons">keyboard_arrow_left</i>
+</button>
+{{end}}
+
+{{if ne .Next ""}}
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" id="next-page" onclick="location.href='/{{.Next}}'">
+		<i class="material-icons">keyboard_arrow_right</i>
+</button>
+{{end}}
 </div>
+
+
+
 {{template "footer.html"}}
+</div></main>
+
+
 <script type="text/javascript">
-function changePage(ev) {
-	if (ev.which === 37) {
-		el = document.getElementById("prev-page");
-		if (el) {
-			location.href = el.href;
-		}
-	} else if (ev.which === 39) {
-		el = document.getElementById("next-page");
-		if (el) {
-			location.href = el.href;
-		}
+function changePage(eventKey) {
+	if (eventKey.which === 37) {
+		prevbutton = document.getElementById("prev-page");
+		prevbutton.click()
+	} else if (eventKey.which === 39) {
+		nextbutton = document.getElementById("next-page");
+		nextbutton.click()
 	}
 }
 document.addEventListener("keydown", changePage);

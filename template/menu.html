@@ -1,12 +1,20 @@
-<div class="header">
-	<div class="logo">
-		<a href="/"><img class="logo" src="/images/lazypic_logo_v03.svg" width=180 height=33></a>
-	</div>
-	{{range .Menus}}
-		{{if eq . $.MenuOn}}
-			<div class="menuon"><a href="/{{lower .}}">{{.}}</a></div>
-		{{else}}
-			<div class="menu"><a href="/{{lower .}}">{{.}}</a></div>
-		{{end}}
-	{{end}}
-</div>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+		  <div class="mdl-layout__header-row">
+			<!-- Title -->
+			<span class="mdl-layout-title">
+					<a href="/"><img class="logo" src="/images/lazypic_logo_white.svg" width=180 height=33></a>
+			</span>
+		  </div>
+		</header>
+		<div class="mdl-layout__drawer">
+		  <span class="mdl-layout-title">
+				<a href="/"><img class="logo" src="/images/lazypic_logo_green.svg" width=180 height=33></a>
+		  </span>
+		  <nav class="mdl-navigation">
+			{{range .Menus}}
+			<a class="mdl-navigation__link" href="/{{lower .}}">{{.}}</a>
+			{{end}}
+		  </nav>
+		</div>
