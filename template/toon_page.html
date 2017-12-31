@@ -7,25 +7,35 @@
 	<img src="/{{.Image}}" style="margin-top:50px;text-align:center" width=100%>
 
 <!-- 버튼 -->
-<div style="text-align:center;padding:20px">
-
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" onclick="location.href='/{{lower .MenuOn}}/0'" style="">
-	<i class="material-icons">reply_all</i>
-</button>
-
-{{if ne .Prev ""}}
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" id="prev-page" onclick="location.href='/{{.Prev}}'">
-		<i class="material-icons">keyboard_arrow_left</i>
-</button>
-{{end}}
-
-{{if ne .Next ""}}
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" id="next-page" onclick="location.href='/{{.Next}}'">
-		<i class="material-icons">keyboard_arrow_right</i>
-</button>
-{{end}}
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone" style="text-align:center;">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" onclick="location.href='/{{lower .MenuOn}}/0'" style="">
+			<i class="material-icons">reply_all</i>
+		</button>
+	</div>
+	<div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone" style="text-align:center;">
+		{{if ne .Prev ""}}
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" id="prev-page" onclick="location.href='/{{.Prev}}'">
+				<i class="material-icons">keyboard_arrow_left</i>
+		</button>
+		{{else}}
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" disabled>
+				<i class="material-icons">keyboard_arrow_left</i>
+		</button>
+		{{end}}
+	</div>
+	<div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone" style="text-align:center;">
+		{{if ne .Next ""}}
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" id="next-page" onclick="location.href='/{{.Next}}'">
+				<i class="material-icons">keyboard_arrow_right</i>
+		</button>
+		{{else}}
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab" disabled>
+			<i class="material-icons">keyboard_arrow_right</i>
+		</button>
+		{{end}}
+	</div>
 </div>
-
 
 
 {{template "footer.html"}}
